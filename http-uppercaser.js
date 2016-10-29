@@ -1,3 +1,8 @@
+/*
+Take POST request from port specified as first argv,
+change to uppercase,
+send to response.
+*/
 var stream = require('stream')
 var http = require('http');
 var upper = new stream.Transform();
