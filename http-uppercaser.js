@@ -8,9 +8,7 @@ var http = require('http');
 var upper = new stream.Transform();
 
 upper._transform = function (chunk, encoding, done){
-	var data = chunk.toString().toUpperCase();
-	data.forEach(this.push(this));
-	done();
+	done(chunk.toString().toUpperCase());
 };
 
 server = http.createServer(function(request, response){
