@@ -29,18 +29,16 @@ const Transform = require('stream').Transform;
 
 const upper = new Transform();
 upper._transform = function (chunk, encoding, callback){
-	callback(null,data.toUpperCase());
+	callback(null,chunk.toString().toUpperCase());
 }
 
 server = http.createServer(function(request, response){
 	request.on('error',function(data){
-		request.end();
+		response.end();
 	})
-	request.on('POST',function(data){
-		console.error(data);
-		data.pipe(upper).pipe(response)
-		request.end();
-	});
+	if (request.method = 'POST'){
+		request.pipe(upper).pipe(response)
+	}
 });
 
 server.listen(process.argv[2]);
