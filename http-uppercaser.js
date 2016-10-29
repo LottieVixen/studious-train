@@ -34,7 +34,7 @@ upper._transform = function (chunk, encoding, callback){
 
 server = http.createServer(function(request, response){
 	request.on('error',function(data){
-		requset.end();
+		request.end();
 	})
 	request.on('POST',function(data){
 		console.error(data);
