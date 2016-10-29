@@ -39,7 +39,7 @@ server = http.createServer(function(request, response){
 	request.on('POST',function(data){
 		console.error(data);
 		data.pipe(upper).pipe(response)
-		requset.end();
+		request.end();
 	});
 });
 
