@@ -8,15 +8,17 @@ var http = require('http');
 var upper = new stream.Transform();
 
 upper._transform = function (chunk, encoding, done){
-	done(null,chunk.toString().toUpperCase());
+	console.error(chunk.toUpperCase());
+	done(null,chunk.toUpperCase());
 };
 
 server = http.createServer(function(request, response){
 	request.on('error',function(data){
-		data.pipe(response);
+		requset.end();
 	})
 	request.on('POST',function(data){
 		data.pipe(upper).pipe(response)
+		requset.end();
 	});
 });
 
